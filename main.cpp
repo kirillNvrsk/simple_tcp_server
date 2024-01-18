@@ -28,6 +28,7 @@ public:
       char buffer[BUFFER_LENGTH] {};
       char reversed[BUFFER_LENGTH] {};
       int n = ss.receiveBytes(buffer, BUFFER_LENGTH);
+      buffer[n] = '\0';
       
       std::cout << "Received: " << buffer;
       
@@ -39,6 +40,7 @@ public:
         
         ss.sendBytes(reversed, cr+2);
         n = ss.receiveBytes(buffer, BUFFER_LENGTH);
+        buffer[n] = '\0';
         std::cout << "Received: " << buffer;
       }
     } catch (Poco::Exception &exc) {
